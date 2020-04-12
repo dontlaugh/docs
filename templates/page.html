@@ -1,0 +1,52 @@
+{% extends "section.html" %}
+<!DOCTYPE html>
+<html>
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+<body>
+
+<!-- page.html needs to override block nav -->
+{%- block nav %}
+<nav id="navbar">
+    <header>{{ config.extra.sidebar_titles.title }}</header>
+    <ul>
+        <!-- Build the nav from the root, the 0th ancestor -->
+        {%- set root = get_section(path=page.ancestors.0) %}
+        {%- for section_path in root.subsections %}
+        {%- set s = get_section(path=section_path) %}
+        <!-- If we are currently selected, render our child pages -->
+        {%- set our_section = get_section(path=page.ancestors.1) %}
+        {%- if s.path == our_section.path %}
+        <li>
+            <a href="{{ s.permalink | safe }}" class="nav-link">{{ s.title }}</a>
+            <ul class="nav-children">
+                {%- for p in s.pages %}
+                <li><a href="{{ p.permalink }}">{{ p.title }}</a></li>
+                {%- endfor %}
+            </ul>
+        </li>
+
+        <!-- ...otherwise, just render a nav link to a section  -->
+        {%- else %}
+        <li><a href="{{ s.permalink | safe }}" class="nav-link">{{ s.title }}</a></li>
+        {%- endif %}
+
+        {%- endfor %}
+    </ul>
+</nav>
+
+{%- endblock nav %}
+
+{%- block main %}
+    <main id="main-doc">
+         <section class="main-section">
+             <header>{{ page.title }}</header> 
+             <article>{{ page.content | safe }}</article>
+        </section> 
+    </main>
+{%- endblock main %}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+stages:
+  - compile
+  - container
+
+compile:
+  stage: compile
+  image: mindkeepersolutions/zola
+  tags:
+    - docker
+  script:
+    - echo "ZOLA VERISON" && zola --version
+    - zola check
+    - zola build
+  artifacts:
+    paths:
+      - public
+
+container:
+  stage: container
+  tags:
+    - shell
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:latest -f docker/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE:latest
+

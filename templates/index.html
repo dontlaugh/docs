@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+{% block head %}
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+{% block title %}<title>{{ config.title }}</title>{% endblock title %}
+<link rel="stylesheet" href="{{ get_url(path="main.css") | safe }}">
+</head>
+{% endblock head %}
+
+<body>
+    {% block nav %}
+    <nav id="navbar">
+        <header>{{ config.extra.sidebar_titles.title }}</header>
+        <ul>
+            {%- for section_path in section.subsections %}
+            {%- set s = get_section(path=section_path) %}
+            <li><a href="{{ s.permalink }}" class="nav-link">{{ s.title }}</a></li>
+            {%- endfor %}
+        </ul>
+    </nav>
+    {% endblock nav %}
+
+    {% block main %}
+    <main id="main-doc">
+         <section class="main-section">
+             <!-- the top-level _index.html is itself a section, so we
+                  have access to section vars --> 
+             <header>{{ section.title }}</header> 
+             <article>{{ section.content | safe }}</article>
+        </section> 
+    </main>
+    {% endblock main %}
+
+</body>
+
+</html>

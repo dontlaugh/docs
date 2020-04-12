@@ -1,0 +1,33 @@
+title = "coleman's docs"
+
+base_url = "http://localhost:8080"
+compile_sass = true
+highlight_code = true
+
+# built-in themes: https://github.com/getzola/zola/tree/master/sublime_themes
+#highlight_theme = "material-light"
+#highlight_theme = "axar"
+#highlight_theme = "ayu-dark"
+#highlight_theme = "base16-ocean-light"  
+#highlight_theme = "cheerfully-light"  
+highlight_theme = "demain"  
+#highlight_theme = "dimmed-fluid"  
+#highlight_theme = "kronuz"  
+#highlight_theme = "visual-studio-dark"  
+#highlight_theme = "zenburn"  
+
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+[extra]
+# Put all your custom variables here
+foo = "Coleman's docs"
+
+[extra.sidebar_titles]
+title = "Coleman's Docs"
+subtitles = [
+  "build > buy",
+  "Access to the filesystem is a human right",
+]
+
