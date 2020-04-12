@@ -1,2 +1,3 @@
-# ignore rendered files
-public/
+# ignore public folder. We don't ignore /docs, which is what Github pages
+# looks for
+public

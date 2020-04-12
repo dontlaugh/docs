@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>coleman&#x27;s docs</title>
+<link rel="stylesheet" href="https://dontlaugh.github.io/docs/main.css">
+</head>
+
+
+
+
+<body>
+    
+<nav id="navbar">
+    <header>Coleman&#x27;s Docs</header>
+    <ul>
+        <!-- Build the nav from the root, the 0th ancestor -->
+        <!-- If we are currently selected, render our child pages -->
+        <li>
+            <a href="https://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a>
+            <ul class="nav-children">
+                <li><a href="https:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;azure&#x2F;">Azure</a></li>
+                <li><a href="https:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;gcp&#x2F;">GCP</a></li>
+            </ul>
+        </li>
+
+        <!-- ...otherwise, just render a nav link to a section  -->
+        <!-- If we are currently selected, render our child pages -->
+        <li><a href="https://dontlaugh.github.io/docs/workflow/" class="nav-link">Dev Setup</a></li>
+    </ul>
+</nav>
+
+    
+    <main id="main-doc">
+         <section class="main-section">
+             <header>GCP</header> 
+             <article><h2 id="install-the-cli">Install the CLI</h2>
+<p>Google ships a cli suite <code>gcloud</code> and <code>gsutil</code>.</p>
+<p><a href="https://cloud.google.com/sdk/docs/quickstart-macos">See these docs</a></p>
+<h2 id="inventory-commands">Inventory Commands</h2>
+<p>List vms</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">gcloud compute instances list
+</span></pre>
+<p>List managed DBs</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">gcloud sql instances list
+</span></pre><h2 id="launch-instances">Launch Instances</h2>
+<p>gcloud compute instances create NAMES... <br />
+--image=&quot;qa-1583525013&quot; <br />
+--zone=&quot;us-east4-c&quot; <br />
+--boot-disk-size=&quot;10GB&quot; <br />
+--labels&quot;KEY1=VAL1,KEY2=VAL2&quot; <br />
+--machine-type=&quot;e2-medium&quot; <br />
+--metadata=&quot;startup-script=&quot;bash /opt/provision.sh&quot;&quot; <br />
+--service-account=&quot;foo&quot;</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+List machine types
+
+</span></pre>
+<p>gcloud compute machine-types list</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+## Service Accounts
+
+These are accounts we create that are roughly analagous to roles in AWS.
+
+</span></pre>
+<p>gcloud iam service-accounts list</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+Get secrets from authenticated machines:
+https://cloud.google.com/sdk/gcloud/reference/beta/secrets/
+
+
+## OS Login
+
+OS Login is a feature of Google Cloud that lets users ssh into instances without
+manually distributing ssh public keys. 
+
+Permissions should be lower than the following, but I haven&#39;t tried it:
+
+</span></pre>
+<p>Editor
+Compute OS Login Admin
+Compute OS Login</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+## Generate an ssh key
+
+</span></pre>
+<p>ssh-keygen</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+A passphrase isn&#39;t required.
+
+## Add your SSH key to instances
+
+This command lest you log into existing instances.
+
+</span></pre>
+<p>gcloud compute os-login ssh-keys add <br />
+--key-file key-file-path <br />
+--ttl 0d</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">
+[See these docs.](https://cloud.google.com/compute/docs/instances/managing-instance-access#add_oslogin_keys)
+
+
+
+</span></pre></article>
+        </section> 
+    </main>
+
+</body>
+
+</html>

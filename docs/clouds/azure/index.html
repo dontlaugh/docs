@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>coleman&#x27;s docs</title>
+<link rel="stylesheet" href="https://dontlaugh.github.io/docs/main.css">
+</head>
+
+
+
+
+<body>
+    
+<nav id="navbar">
+    <header>Coleman&#x27;s Docs</header>
+    <ul>
+        <!-- Build the nav from the root, the 0th ancestor -->
+        <!-- If we are currently selected, render our child pages -->
+        <li>
+            <a href="https://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a>
+            <ul class="nav-children">
+                <li><a href="https:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;azure&#x2F;">Azure</a></li>
+                <li><a href="https:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;gcp&#x2F;">GCP</a></li>
+            </ul>
+        </li>
+
+        <!-- ...otherwise, just render a nav link to a section  -->
+        <!-- If we are currently selected, render our child pages -->
+        <li><a href="https://dontlaugh.github.io/docs/workflow/" class="nav-link">Dev Setup</a></li>
+    </ul>
+</nav>
+
+    
+    <main id="main-doc">
+         <section class="main-section">
+             <header>Azure</header> 
+             <article><h2 id="inventory-scripts">Inventory Scripts</h2>
+<p>Install <code>az</code> cli. Then login via browser.</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az login
+</span></pre>
+<p>Count Azure virtual machines</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az vm list | jq -r &#39;.[].vmId&#39; | wc -l
+</span></pre>
+<p>List virtual machines, their size (not including disk), and their tags</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az vm list | jq -r &#39;.[] | &quot;\(.vmId)\t\(.hardwareProfile.vmSize)\t \(.name)&quot;&#39;
+
+az vm list | jq -r &#39;.[] | &quot;\(.vmId)\t\(.hardwareProfile.vmSize)\t  \(.tags)&quot;&#39;
+</span></pre>
+<p>Some are deallocated. Expand VM details to get their power state. Warning:
+this command is slow.</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az vm list --show-details | jq -r &#39;.[] | &quot;\(.powerState)\t\(.hardwareProfile.vmSize)\t\(.name)&quot;&#39;
+</span></pre>
+<p>List snapshots</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az snapshot list | jq -r &#39;.[].name&#39;
+</span></pre>
+<p>List disks</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">az disk list | jq -r &#39;.[].name&#39;
+az disk list | jq -r &#39;.[] | &quot;\(.name)\t\(.diskSizeGb)\t\(.diskState)\t\(.tags)&quot;&#39;
+</span></pre></article>
+        </section> 
+    </main>
+
+</body>
+
+</html>

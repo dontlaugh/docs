@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>coleman&#x27;s docs</title>
+<link rel="stylesheet" href="https://dontlaugh.github.io/docs/main.css">
+</head>
+
+
+
+
+<body>
+    
+<nav id="navbar">
+    <header>Coleman&#x27;s Docs</header>
+    <ul>
+        <!-- Build the nav from the root, the 0th ancestor -->
+        <!-- If we are currently selected, render our child pages -->
+        <li><a href="https://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a></li>
+        <!-- If we are currently selected, render our child pages -->
+        <li>
+            <a href="https://dontlaugh.github.io/docs/workflow/" class="nav-link">Dev Setup</a>
+            <ul class="nav-children">
+                <li><a href="https:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;workflow&#x2F;workflow&#x2F;">Writing and Releasing Code</a></li>
+            </ul>
+        </li>
+
+        <!-- ...otherwise, just render a nav link to a section  -->
+    </ul>
+</nav>
+
+    
+    <main id="main-doc">
+         <section class="main-section">
+             <header>Writing and Releasing Code</header> 
+             <article><p>Over the years I've collected some guidelines that help teams (myself included)
+keep code quality high. This is the kind of stuff you might put in a 
+<strong>CONTRIBUTING.md</strong> document.</p>
+<h2 id="tests">Tests</h2>
+<p>Code should be submitted with a reasonable suite of tests, and code should be 
+designed with testability in mind.</p>
+<h2 id="commit-messages">Commit Messages</h2>
+<p>Commit messages should explain <strong>why</strong> code is changing, configuration is added,
+or new types or packages are introduced. Prefer a declarative style, like </p>
+<p><em>Pass a dictionary to reduce the number of parameters</em></p>
+<h2 id="code-review">Code Review</h2>
+<p>All code needs code review and at least one &quot;thumbs up&quot; from a colleague. After
+the thumbs up <strong>the person who submitted the merge/pull request should click
+the merge button</strong>. Always choose &quot;delete branch&quot; when merging to keep the 
+number of old branches low on the server.</p>
+<p>If an implementation is tricky, document your design and hop on a call with a 
+colleague.</p>
+<p>If code requires special local testing, provide a test plan in a PR comment (not 
+the commit message or merge request description). Step by step instructions or
+a script are ideal.</p>
+<p>Overall, you should strive to make reviewing efficient for your colleagues.</p>
+<h2 id="merge-frequently">Merge Frequently</h2>
+<p>Merge frequently. Deploy to &quot;lower&quot; environments (qa/stage) frequently. 
+Integrate with your colleages' work frequently.</p>
+<h2 id="changelog">Changelog</h2>
+<p>The changelog is a valuable resource. It is maintained in <strong>CHANGELOG.md</strong>. Most
+MRs should include edits to the changelog to describe bug fixes, API changes,
+or new features added.</p>
+<p>When submitting an MR, document your changes under one or more of the following 
+section headers in the <code>Unreleased</code> section.</p>
+<ul>
+<li><code>Added</code> for new features.</li>
+<li><code>Changed</code> for changes in existing functionality.</li>
+<li><code>Deprecated</code> for soon-to-be removed features.</li>
+<li><code>Removed</code> for now removed features.</li>
+<li><code>Fixed</code> for any bug fixes. Add a link to any relevant Clubhouse issues.</li>
+<li><code>Security</code> in case of vulnerabilities. Add a link to CVEs or public announcements.</li>
+</ul>
+<p>When we're ready to cut a release, change the <code>Unreleased</code> header to the next
+appropriate version, and tidy up the contents that have been added since the
+previous release.</p>
+<p>Our changelog style is adapted from <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+<h2 id="style-guide">Style Guide</h2>
+<p>Functions should take as few parameters as possible. If many parameters are 
+required, consider introducing a new type that logically groups the data.</p>
+<p>Large blocks of commented out code should not be checked in.</p>
+<p>Avoid the use of global variables. Prefer a dependency injection style that
+uses a mix of interfaces and concrete types.</p>
+<h2 id="sprints-and-milestones">Sprints and Milestones</h2>
+<p>All work should be documented in issues and collected into a sprint.
+Sprints map to two-week periods of time. At the beginning of a sprint, we discuss
+work we want to do and make sure all of it is documented in issues. Bugs and hot
+fixes can be added to the middle of the sprint, but not without discussion.</p>
+<h2 id="releases-and-tagging">Releases and Tagging</h2>
+<p>Only versioned releases go to production. Every versioned release is listed in
+the changelog.</p>
+<p>To create a release, do the following:</p>
+<ol>
+<li>
+<p>Pick a version number for the release. Our example below is <strong>0.1.0</strong></p>
+</li>
+<li>
+<p>Change the latest <code>Unreleased</code> header in CHANGELOG.md to a versioned release.
+The new header will contains the version and the release date. It will look 
+something like this:</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">## [0.1.0] - 2017-06-20
+</span></pre></li>
+<li>
+<p>MR that update to CHANGELOG.md to <strong>master</strong> branch. This MR represents
+the commit we will tag. </p>
+</li>
+<li>
+<p>When the MR of changes is accepted, <strong>one team member</strong> does the following
+from the command line:</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">git fetch origin
+</span><span style="color:#111111;">git checkout master
+</span><span style="color:#111111;">git tag -a 0.1.0 -m &#39;version 0.1.0&#39;
+</span><span style="color:#111111;">git push origin --tags
+</span></pre></li>
+</ol>
+<p>A CI workflow that runs on tag pushes should kick off and build your
+deployment artifact. That CI workflow should use a regular expression to 
+ensure that your tag has a well-formed name.</p>
+<p>If you ever need to delete a tag (maybe you made a typo), you can do this:</p>
+<pre style="background-color:#f9f9f9;">
+<span style="color:#111111;">git tag -d 1.0.4
+git push origin :refs/tags/1.0.4
+</span></pre></article>
+        </section> 
+    </main>
+
+</body>
+
+</html>

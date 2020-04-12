@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/clouds/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/clouds/azure/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/clouds/gcp/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/workflow/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://dontlaugh.github.io/docs/workflow/workflow/</loc>
+            
+        </url>
+    
+</urlset>

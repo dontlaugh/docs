@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://dontlaugh.github.io/docs/sitemap.xml
