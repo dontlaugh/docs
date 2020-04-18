@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://dontlaugh.github.io/docs/sitemap.xml
+Sitemap: dontlaugh.github.io/docs/sitemap.xml
