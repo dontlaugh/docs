@@ -21,18 +21,16 @@
         <!-- Build the nav from the root, the 0th ancestor -->
 
         <!-- If we are currently selected, render our child pages -->
-        <li>
-            <a href="http://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a>
-            <ul class="nav-children">
-                <!-- this needs to link to a page -->
-                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;azure&#x2F;">Azure</a></li>
-                <!-- this needs to link to a page -->
-                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;gcp&#x2F;">GCP</a></li>
-            </ul>
-        </li>
+        <li><a href="http://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a></li>
 
         <!-- If we are currently selected, render our child pages -->
-        <li><a href="http://dontlaugh.github.io/docs/ideas/" class="nav-link">Ideas</a></li>
+        <li>
+            <a href="http://dontlaugh.github.io/docs/ideas/" class="nav-link">Ideas</a>
+            <ul class="nav-children">
+                <!-- this needs to link to a page -->
+                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;ideas&#x2F;config-management&#x2F;">A Config Management System</a></li>
+            </ul>
+        </li>
 
         <!-- If we are currently selected, render our child pages -->
         <li><a href="http://dontlaugh.github.io/docs/workflow/" class="nav-link">Workflow</a></li>
@@ -48,8 +46,8 @@
          <section class="main-section">
              <!-- the top-level _index.html is itself a section, so we
                   have access to section vars --> 
-             <header>Clouds</header> 
-             <article><p>Notes on various cloud providers.</p>
+             <header>Ideas</header> 
+             <article><p>Half-baked designs.</p>
 </article>
         </section> 
     </main>

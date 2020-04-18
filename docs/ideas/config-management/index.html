@@ -3,6 +3,7 @@
 <html>
 
 
+
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -13,47 +14,46 @@
 
 
 
+
 <body>
     
 <nav id="navbar">
     <header>Coleman&#x27;s Docs</header>
     <ul>
         <!-- Build the nav from the root, the 0th ancestor -->
-
+        <!-- If we are currently selected, render our child pages -->
+        <li><a href="http://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a></li>
         <!-- If we are currently selected, render our child pages -->
         <li>
-            <a href="http://dontlaugh.github.io/docs/clouds/" class="nav-link">Clouds</a>
+            <a href="http://dontlaugh.github.io/docs/ideas/" class="nav-link">Ideas</a>
             <ul class="nav-children">
-                <!-- this needs to link to a page -->
-                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;azure&#x2F;">Azure</a></li>
-                <!-- this needs to link to a page -->
-                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;clouds&#x2F;gcp&#x2F;">GCP</a></li>
+                <li><a href="http:&#x2F;&#x2F;dontlaugh.github.io&#x2F;docs&#x2F;ideas&#x2F;config-management&#x2F;">A Config Management System</a></li>
             </ul>
         </li>
 
-        <!-- If we are currently selected, render our child pages -->
-        <li><a href="http://dontlaugh.github.io/docs/ideas/" class="nav-link">Ideas</a></li>
-
+        <!-- ...otherwise, just render a nav link to a section  -->
         <!-- If we are currently selected, render our child pages -->
         <li><a href="http://dontlaugh.github.io/docs/workflow/" class="nav-link">Workflow</a></li>
-
     </ul>
 </nav>
 
     
-<!--
--->
-
     <main id="main-doc">
          <section class="main-section">
-             <!-- the top-level _index.html is itself a section, so we
-                  have access to section vars --> 
-             <header>Clouds</header> 
-             <article><p>Notes on various cloud providers.</p>
+             <header>A Config Management System</header> 
+             <article><h2 id="goals">goals</h2>
+<p>Take the best of what's out there.</p>
+<ul>
+<li>Event bus and orchestration concepts (Salt, Consul)</li>
+<li>Multi-node orchestration</li>
+<li>Agent-based AND non-agent based modes</li>
+<li>multi transport</li>
+<li>strong typing</li>
+<li>Portable code</li>
+</ul>
 </article>
         </section> 
     </main>
-    
 
 </body>
 
